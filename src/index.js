@@ -1,3 +1,14 @@
+let calcReminder = function (number, nums) {
+    if (number < 21) {
+        return nums.get(number);
+    } else if (number >= 21 && number < 100) {
+        let int = Math.floor(number / 10) * 10;
+        let reminder = number % 10;
+        return reminder == 0
+            ? nums.get(int)
+            : nums.get(int) + " " + nums.get(reminder);
+    }
+};
 module.exports = function toReadable(number) {
     const nums = new Map();
     nums.set(0, "zero");
@@ -33,22 +44,16 @@ module.exports = function toReadable(number) {
     } else if (number >= 21 && number < 100) {
         let int = Math.floor(number / 10) * 10;
         let reminder = number % 10;
-        return reminder == 0 ? nums.get(int) : nums.get(int + " " + reminder);
+        return reminder == 0
+            ? nums.get(int)
+            : nums.get(int) + " " + nums.get(reminder);
     } else if (number >= 100 && number < 1000) {
         let hundred = Math.floor(number / 100);
         let reminder2 = number % 100;
         return reminder2 == 0
-            ? nums.get(hundred + " hundred ")
-            : nums.get(hundred + " hundred ") + calcReminder(reminder2, nums);
+            ? nums.get(hundred) + " hundred "
+            : nums.get(hundred) + " hundred " + calcReminder(reminder2, nums);
     }
 };
 
-let calcReminder = function (number, nums) {
-    if (number < 21) {
-        return nums.get(number);
-    } else if (number >= 21 && number < 100) {
-        let int = Math.floor(number / 10) * 10;
-        let reminder = number % 10;
-        return reminder == 0 ? nums.get(int) : nums.get(int + " " + reminder);
-    }
-};
+console.log(toReadable(33));
