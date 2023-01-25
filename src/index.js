@@ -1,4 +1,4 @@
-let calcReminder = function (number, nums) {
+module.exports = function calcReminder(number, nums) {
     if (number < 21) {
         return nums.get(number);
     } else if (number >= 21 && number < 100) {
@@ -55,5 +55,3 @@ module.exports = function toReadable(number) {
             : nums.get(hundred) + " hundred " + calcReminder(reminder2, nums);
     }
 };
-
-console.log(toReadable(33));
