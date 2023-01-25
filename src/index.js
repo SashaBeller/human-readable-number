@@ -1,4 +1,4 @@
-module.exports = function calcReminder(number, nums) {
+let calcReminder = function (number, nums) {
     if (number < 21) {
         return nums.get(number);
     } else if (number >= 21 && number < 100) {
@@ -51,7 +51,7 @@ module.exports = function toReadable(number) {
         let hundred = Math.floor(number / 100);
         let reminder2 = number % 100;
         return reminder2 == 0
-            ? nums.get(hundred) + " hundred "
+            ? nums.get(hundred) + " hundred"
             : nums.get(hundred) + " hundred " + calcReminder(reminder2, nums);
     }
 };
